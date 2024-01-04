@@ -15,7 +15,7 @@ env:
     # or use a repo?
     MAIN_MOD: allFluidsAreGasses
     PLUGIN_NAMES: '"allFluidsAreGasses", "KPrivateCodeLib", "KUI", "KBFL"'
-    PLUGIN_NAMES_PARAM: '"allFluidsAreGasses", "KPrivateCodeLib", "KUI", "KBFL"'
+    PLUGIN_NAMES_PARAM: '"allFluidsAreGasses" "KPrivateCodeLib" "KUI" "KBFL"'
 
 jobs:
     build-mod:
@@ -79,7 +79,7 @@ jobs:
                   cd $current
                   }
                 }
-                Git-Clone "https://oauth2:${{ secrets.PAT }}@github.com/Satisfactory-KMods/RSS.git" "$PWD/SML/Mods/allFluidsAreGasses"
+                Git-Clone "https://oauth2:${{ secrets.PAT }}@github.com/Satisfactory-KMods/allFluidsAreGasses.git" "$PWD/SML/Mods/allFluidsAreGasses"
                 Git-Clone "https://oauth2:${{ secrets.PAT }}@github.com/Satisfactory-KMods/KPrivateCodeLib.git" "$PWD/SML/Mods/KPrivateCodeLib"
                 Git-Clone "https://oauth2:${{ secrets.PAT }}@github.com/Satisfactory-KMods/KBFL.git" "$PWD/SML/Mods/KBFL"
                 Git-Clone "https://oauth2:${{ secrets.PAT }}@github.com/Satisfactory-KMods/KUI.git" "$PWD/SML/Mods/KUI"
