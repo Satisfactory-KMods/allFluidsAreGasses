@@ -96,25 +96,15 @@ jobs:
                 pnpm run UpdateUPlugins ${{ env.MAIN_MOD }}
                 cd ..
 
-            - uses: dorny/paths-filter@v2
-              id: changes
-              with:
-                filters: |
-                  Source:
-                    - 'Source/**'
-
             - name: generate project
-              if: steps.changes.outputs.src == 'true'
               run: |
                 ${{ env.UE_PATH }}\Engine\Build\BatchFiles\Build.bat -projectfiles -project="$PWD\SML\FactoryGame.uproject" -game -rocket -progres
 
             - name: build c++ dev editor
-              if: steps.changes.outputs.src == 'true'
               run: |
                 MSBuild.exe $PWD\SML\FactoryGame.sln /p:Configuration="Development Editor" /p:Platform="Win64" /t:"Games\FactoryGame"
 
             - name: build c++ shipping
-              if: steps.changes.outputs.src == 'true'
               run: |
                 MSBuild.exe $PWD\SML\FactoryGame.sln /p:Configuration="Shipping" /p:Platform="Win64" /t:"Games\FactoryGame"
 
