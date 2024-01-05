@@ -22,7 +22,9 @@ jobs:
         name: Build Mod and Prepare Releases
         timeout-minutes: 180
         runs-on: self-hosted
-        working-directory: "C:\\Users\\Administrator\\Documents\\workflow"
+        defaults:
+          run:
+            working-directory: "C:\\Users\\Administrator\\Documents\\workflow"
         steps:
             - name: Clone Patcher
               uses: actions/checkout@v3
@@ -72,27 +74,25 @@ jobs:
               run: |
                 $plugins = ${{ env.PLUGIN_NAMES }}
                 $PLUGIN = $plugins[0]
-              run: |
-                MSBuild.exe $PWD\SML\FactoryGame.sln /p:Configuration="Shipping" /p:Platform="Win64" /t:"Games\FactoryGame"
+                & ${{ env.UE_PATH }}\Engine\Build\BatchFiles\RunUAT.bat -ScriptsForProject="$PWD\SML\FactoryGame.uproject" PackagePlugin -Project="$PWD\SML\FactoryGame.uproject" -dlcname="$PLUGIN" -build -clientconfig=Shipping -serverconfig=Shipping -platform=Win64 -nocompileeditor -installed
 
             - name: Package KPrivateCodeLib
               run: |
                 $plugins = ${{ env.PLUGIN_NAMES }}
                 $PLUGIN = $plugins[1]
-              run: |
-                MSBuild.exe $PWD\SML\FactoryGame.sln /p:Configuration="Shipping" /p:Platform="Win64" /t:"Games\FactoryGame"
+                & ${{ env.UE_PATH }}\Engine\Build\BatchFiles\RunUAT.bat -ScriptsForProject="$PWD\SML\FactoryGame.uproject" PackagePlugin -Project="$PWD\SML\FactoryGame.uproject" -dlcname="$PLUGIN" -build -clientconfig=Shipping -serverconfig=Shipping -platform=Win64 -nocompileeditor -installed
 
             - name: Package KUI
               run: |
                 $plugins = ${{ env.PLUGIN_NAMES }}
                 $PLUGIN = $plugins[2]
-              run: |
-                MSBuild.exe $PWD\SML\FactoryGame.sln /p:Configuration="Shipping" /p:Platform="Win64" /t:"Games\FactoryGame"
+                & ${{ env.UE_PATH }}\Engine\Build\BatchFiles\RunUAT.bat -ScriptsForProject="$PWD\SML\FactoryGame.uproject" PackagePlugin -Project="$PWD\SML\FactoryGame.uproject" -dlcname="$PLUGIN" -build -clientconfig=Shipping -serverconfig=Shipping -platform=Win64 -nocompileeditor -installed
 
             - name: Package KBFL
               run: |
                 $plugins = ${{ env.PLUGIN_NAMES }}
                 $PLUGIN = $plugins[3]
+                & ${{ env.UE_PATH }}\Engine\Build\BatchFiles\RunUAT.bat -ScriptsForProject="$PWD\SML\FactoryGame.uproject" PackagePlugin -Project="$PWD\SML\FactoryGame.uproject" -dlcname="$PLUGIN" -build -clientconfig=Shipping -serverconfig=Shipping -platform=Win64 -nocompileeditor -installed
 
             - name: Archive Artifact Result
               uses: actions/upload-artifact@v2
