@@ -32,7 +32,7 @@ jobs:
 
             - name: Use SML Cache
               run: |
-                $robocopy_process = Start-Process "robocopy" -ArgumentList "${{ env.SML_CACHE_PATH }} $PWD\SML /S /E /R:5 /W:5 /TBD /MT:12 /LOG:copy.log" -PassThru -Wait
+                $robocopy_process = Start-Process "robocopy" -ArgumentList "${{ env.SML_CACHE_PATH }} $PWD\SML /S /E /R:5 /W:5 /TBD /MT:32 /LOG:copy.log" -PassThru -Wait
                 if ($robocopy_process.ExitCode -ne 1) { exit 1 }
 
             # uncomment this for Satisfactory Plus!
@@ -102,7 +102,7 @@ jobs:
             - name: Create Cache
               run: | 
                 Remove-Item "${{ env.SML_CACHE_PATH }}" -Recurse -Force
-                $robocopy_process = Start-Process "robocopy" -ArgumentList "$PWD\SML ${{ env.SML_CACHE_PATH }} /S /E /R:5 /W:5 /TBD /MT:12 /LOG:copy.log" -PassThru -Wait
+                $robocopy_process = Start-Process "robocopy" -ArgumentList "$PWD\SML ${{ env.SML_CACHE_PATH }} /S /E /R:5 /W:5 /TBD /MT:32 /LOG:copy.log" -PassThru -Wait
                 if ($robocopy_process.ExitCode -ne 1) { exit 1 }
                 Remove-Item "${{ env.SML_CACHE_PATH }}\Saved\ArchivedPlugins" -Recurse -Force
 
