@@ -14,7 +14,6 @@ env:
 
     # or use a repo?
     MAIN_MOD: allFluidsAreGasses
-    PLUGIN_NAMES: '"allFluidsAreGasses", "KPrivateCodeLib", "KUI", "KBFL"'
     PLUGIN_NAMES_PARAM: '"allFluidsAreGasses" "KPrivateCodeLib" "KUI" "KBFL"'
     WORKING_DIR: "C:\\Users\\Administrator\\Documents\\workflow"
 
@@ -69,26 +68,22 @@ jobs:
 
             - name: Package allFluidsAreGasses
               run: |
-                $plugins = ${{ env.PLUGIN_NAMES }}
-                $PLUGIN = $plugins[0]
+                $PLUGIN = "allFluidsAreGasses"
                 & ${{ env.UE_PATH }}\Engine\Build\BatchFiles\RunUAT.bat -ScriptsForProject="$PWD\SML\FactoryGame.uproject" PackagePlugin -Project="$PWD\SML\FactoryGame.uproject" -dlcname="$PLUGIN" -build -clientconfig=Shipping -serverconfig=Shipping -platform=Win64 -nocompileeditor -installed
 
             - name: Package KPrivateCodeLib
               run: |
-                $plugins = ${{ env.PLUGIN_NAMES }}
-                $PLUGIN = $plugins[1]
+                $PLUGIN = "KPrivateCodeLib"
                 & ${{ env.UE_PATH }}\Engine\Build\BatchFiles\RunUAT.bat -ScriptsForProject="$PWD\SML\FactoryGame.uproject" PackagePlugin -Project="$PWD\SML\FactoryGame.uproject" -dlcname="$PLUGIN" -build -clientconfig=Shipping -serverconfig=Shipping -platform=Win64 -nocompileeditor -installed
 
             - name: Package KUI
               run: |
-                $plugins = ${{ env.PLUGIN_NAMES }}
-                $PLUGIN = $plugins[2]
+                $PLUGIN = "KUI"
                 & ${{ env.UE_PATH }}\Engine\Build\BatchFiles\RunUAT.bat -ScriptsForProject="$PWD\SML\FactoryGame.uproject" PackagePlugin -Project="$PWD\SML\FactoryGame.uproject" -dlcname="$PLUGIN" -build -clientconfig=Shipping -serverconfig=Shipping -platform=Win64 -nocompileeditor -installed
 
             - name: Package KBFL
               run: |
-                $plugins = ${{ env.PLUGIN_NAMES }}
-                $PLUGIN = $plugins[3]
+                $PLUGIN = "KBFL"
                 & ${{ env.UE_PATH }}\Engine\Build\BatchFiles\RunUAT.bat -ScriptsForProject="$PWD\SML\FactoryGame.uproject" PackagePlugin -Project="$PWD\SML\FactoryGame.uproject" -dlcname="$PLUGIN" -build -clientconfig=Shipping -serverconfig=Shipping -platform=Win64 -nocompileeditor -installed
 
             - name: Archive Artifact Result
