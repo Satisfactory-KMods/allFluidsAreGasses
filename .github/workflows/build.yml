@@ -16,6 +16,7 @@ env:
     MAIN_MOD: allFluidsAreGasses
     PLUGIN_NAMES: '"allFluidsAreGasses", "KPrivateCodeLib", "KUI", "KBFL"'
     PLUGIN_NAMES_PARAM: '"allFluidsAreGasses" "KPrivateCodeLib" "KUI" "KBFL"'
+    WORKING_DIR: "C:\\Users\\Administrator\\Documents\\workflow"
 
 jobs:
     build-mod:
@@ -27,11 +28,7 @@ jobs:
             working-directory: "C:\\Users\\Administrator\\Documents\\workflow"
         steps:
             - name: Clone Patcher
-              uses: actions/checkout@v3
-              with:
-                repository: Satisfactory-KMods/WorkflowPatcher
-                path: Patcher
-                token: ${{ secrets.PAT }}
+              run: Git-Clone "https://oauth2:${{ secrets.PAT }}@github.com/Satisfactory-KMods/WorkflowPatcher.git" "$PWD/Patcher"
 
             - name: Use SML Cache
               run: |
@@ -100,7 +97,7 @@ jobs:
                 name: "result.zip"
                 retention-days: 30
                 if-no-files-found: error
-                path: "SML\\Saved\\ArchivedPlugins"
+                path: "${{ env.WORKING_DIR }}\\SML\\Saved\\ArchivedPlugins"
 
             - name: Create Cache
               run: | 
@@ -121,7 +118,7 @@ jobs:
                 name: "compressed.zip"
                 retention-days: 30
                 if-no-files-found: error
-                path: "Zips"
+                path: "${{ env.WORKING_DIR }}\\Zips"
 
             - name: Cleanup
               if: always()
