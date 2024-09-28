@@ -11,12 +11,13 @@
  * 
  */
 UCLASS(Blueprintable)
-class ALLFLUIDSAREGASSES_API UAFAGWorldModule: public UKBFLGameInstanceModule {
+class ALLFLUIDSAREGASSES_API UAFAGWorldModule : public UKBFLGameInstanceModule
+{
 	GENERATED_BODY()
 
-	public:
-		UAFAGWorldModule();
+public:
+	UAFAGWorldModule();
 
-		virtual void ConstructionPhase_Delayed() override;
-		void         OverwriteItems();
+	virtual void ConstructionPhase_Delayed() override;
+	void OverwriteItems();
 };

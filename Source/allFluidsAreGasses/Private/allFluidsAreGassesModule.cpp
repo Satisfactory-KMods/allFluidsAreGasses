@@ -9,7 +9,8 @@ DECLARE_LOG_CATEGORY_EXTERN(AFAGHookLog, Log, All);
 
 DEFINE_LOG_CATEGORY(AFAGHookLog);
 
-void FallFluidsAreGassesModule::StartupModule() {
+void FallFluidsAreGassesModule::StartupModule()
+{
 #if !WITH_EDITOR
 	SUBSCRIBE_METHOD_VIRTUAL( AFGBuildableGeneratorFuel::BeginPlay, GetMutableDefault<AFGBuildableGeneratorFuel>(), [](CallScope<void(*)(AFGBuildableGeneratorFuel*)>& scope, AFGBuildableGeneratorFuel* selfref) { if(selfref->mFuelResourceForm == EResourceForm::RF_LIQUID) { selfref->mFuelResourceForm = EResourceForm::RF_GAS; UE_LOG(AFAGHookLog, Log, TEXT("make Gas Valid: %s"), *selfref->GetName()); } } );
 
