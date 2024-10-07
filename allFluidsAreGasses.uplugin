@@ -1,49 +1,50 @@
 {
-  "FileVersion": 3,
-  "Version": 2,
-  "VersionName": "2.3.2",
-  "SemVersion": "2.3.2",
-  "FriendlyName": "All Fluids Are Gasses",
-  "Description": "Add",
-  "Category": "Modding",
-  "CreatedBy": "Kyri123",
-  "CreatedByURL": "",
-  "DocsURL": "",
-  "MarketplaceURL": "",
-  "SupportURL": "",
-  "CanContainContent": true,
-  "IsBetaVersion": false,
-  "IsExperimentalVersion": false,
-  "Installed": false,
-  "Modules": [
-    {
-      "Name": "allFluidsAreGasses",
-      "Type": "Runtime",
-      "LoadingPhase": "Default"
-    }
-  ],
-  "Plugins": [
-    {
-      "Name": "SML",
-      "SemVersion": "^3.7.0",
-      "Enabled": false,
-      "BasePlugin": false
-    },
-    {
-      "Name": "KBFL",
-      "Enabled": true,
-      "SemVersion": "^2.2.0",
-      "BasePlugin": false
-    },
-    {
-      "Name": "KPrivateCodeLib",
-      "SemVersion": "^2.2.0",
-      "bIsOptional": false,
-      "bIsBasePlugin": false,
-      "Enabled": true,
-      "BasePlugin": false
-    }
-  ],
-  "RemoteVersionRange": "",
-  "AcceptsAnyRemoteVersion": false
+	"FileVersion": 3,
+	"Version": 2,
+	"VersionName": "2.3.2",
+	"SemVersion": "2.3.2",
+	"FriendlyName": "All Fluids Are Gasses",
+	"Description": "Add",
+	"Category": "Modding",
+	"CreatedBy": "Kyri123",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "allFluidsAreGasses",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "SML",
+			"SemVersion": "^3.8.0-dev",
+			"Enabled": false,
+			"BasePlugin": false
+		},
+		{
+			"Name": "KBFL",
+			"Enabled": true,
+			"SemVersion": "^2.2.0",
+			"BasePlugin": false
+		},
+		{
+			"Name": "KPrivateCodeLib",
+			"SemVersion": "^2.2.0",
+			"bIsOptional": false,
+			"bIsBasePlugin": false,
+			"Enabled": true,
+			"BasePlugin": false
+		}
+	],
+	"RemoteVersionRange": "",
+	"AcceptsAnyRemoteVersion": false,
+	"GameVersion": ">=365306"
 }
