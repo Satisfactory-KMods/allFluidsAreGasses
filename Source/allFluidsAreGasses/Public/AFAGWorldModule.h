@@ -19,5 +19,5 @@ public:
 	UAFAGWorldModule();
 
 	virtual void ConstructionPhase_Delayed() override;
-	void OverwriteItems();
+	void         OverwriteItems();
 };

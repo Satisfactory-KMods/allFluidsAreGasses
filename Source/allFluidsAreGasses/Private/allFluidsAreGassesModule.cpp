@@ -11,9 +11,9 @@ DEFINE_LOG_CATEGORY(AFAGHookLog);
 
 void FallFluidsAreGassesModule::StartupModule()
 {
-#if !WITH_EDITOR
+	#if !WITH_EDITOR
 	SUBSCRIBE_METHOD_VIRTUAL( AFGBuildableResourceExtractorBase::BeginPlay, GetMutableDefault<AFGBuildableResourceExtractorBase>(), [](CallScope<void(*)(AFGBuildableResourceExtractorBase*)>& scope, AFGBuildableResourceExtractorBase* selfref) { selfref->mAllowedResourceForms.AddUnique(EResourceForm::RF_GAS); UE_LOG(AFAGHookLog, Log, TEXT("make Gas Valid: %s"), *selfref->GetName()); } );
-#endif
+	#endif
 }
 
 IMPLEMENT_GAME_MODULE(FallFluidsAreGassesModule, allFluidsAreGasses);

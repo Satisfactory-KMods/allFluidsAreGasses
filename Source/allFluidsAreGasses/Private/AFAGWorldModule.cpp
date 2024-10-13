@@ -22,7 +22,7 @@ void UAFAGWorldModule::ConstructionPhase_Delayed()
 	Super::ConstructionPhase_Delayed();
 
 	const UKBFLContentCDOHelperSubsystem* CDOHelperSubsystem = UKBFLContentCDOHelperSubsystem::Get(GetWorld());
-	const UKBFLAssetDataSubsystem* AssetDataSubsystem = UKBFLAssetDataSubsystem::Get(GetWorld());
+	const UKBFLAssetDataSubsystem*        AssetDataSubsystem = UKBFLAssetDataSubsystem::Get(GetWorld());
 
 	if (CDOHelperSubsystem && AssetDataSubsystem)
 	{
@@ -35,12 +35,12 @@ void UAFAGWorldModule::ConstructionPhase_Delayed()
 void UAFAGWorldModule::OverwriteItems()
 {
 	UKBFLContentCDOHelperSubsystem* CDOHelperSubsystem = UKBFLContentCDOHelperSubsystem::Get(GetWorld());
-	UKBFLAssetDataSubsystem* AssetDataSubsystem = UKBFLAssetDataSubsystem::Get(GetWorld());
+	UKBFLAssetDataSubsystem*        AssetDataSubsystem = UKBFLAssetDataSubsystem::Get(GetWorld());
 
 	if (AssetDataSubsystem && CDOHelperSubsystem)
 	{
 		TArray<TSubclassOf<UFGItemDescriptor>> Items;
-		AssetDataSubsystem->GetItemsOfForms({EResourceForm::RF_LIQUID, EResourceForm::RF_GAS}, Items);
+		AssetDataSubsystem->GetItemsOfForms({ EResourceForm::RF_LIQUID, EResourceForm::RF_GAS }, Items);
 		if (Items.Num() > 0)
 		{
 			for (TSubclassOf<UFGItemDescriptor> Item : Items)
@@ -51,16 +51,16 @@ void UAFAGWorldModule::OverwriteItems()
 					Default->mForm = EResourceForm::RF_GAS;
 					Default->MarkPackageDirty();
 					UE_LOG(AFAGWorldModuleLog, Log, TEXT("Modify Item %s to Gas"),
-					       *UFGItemDescriptor::GetItemName(Item).ToString());
+						*UFGItemDescriptor::GetItemName(Item).ToString());
 				}
 			}
 		}
 
 		TArray<TSubclassOf<AFGBuildable>> Buildings;
 		AssetDataSubsystem->GetBuildableOfChilds({
-			                                         AFGBuildableResourceExtractorBase::StaticClass(),
-			                                         AFGBuildableGeneratorFuel::StaticClass(),
-		                                         }, Buildings);
+			AFGBuildableResourceExtractorBase::StaticClass(),
+			AFGBuildableGeneratorFuel::StaticClass(),
+		}, Buildings);
 
 		if (Buildings.Num() > 0)
 		{
@@ -75,7 +75,7 @@ void UAFAGWorldModule::OverwriteItems()
 						DefaultObject->mAllowedResourceForms.AddUnique(EResourceForm::RF_GAS);
 						DefaultObject->MarkPackageDirty();
 						UE_LOG(AFAGWorldModuleLog, Log, TEXT("Add Gas as valid for building: %s"),
-						       *DefaultObject->GetName());
+							*DefaultObject->GetName());
 					}
 				}
 			}

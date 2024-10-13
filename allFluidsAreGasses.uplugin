@@ -1,8 +1,8 @@
 {
 	"FileVersion": 3,
-	"Version": 2,
-	"VersionName": "2.3.2",
-	"SemVersion": "2.3.2",
+	"Version": 3,
+	"VersionName": "3.0.0",
+	"SemVersion": "3.0.0",
 	"FriendlyName": "All Fluids Are Gasses",
 	"Description": "Add",
 	"Category": "Modding",
@@ -25,26 +25,17 @@
 	"Plugins": [
 		{
 			"Name": "SML",
-			"SemVersion": "^3.8.0-dev",
-			"Enabled": false,
-			"BasePlugin": false
-		},
-		{
-			"Name": "KBFL",
-			"Enabled": true,
-			"SemVersion": "^2.2.0",
-			"BasePlugin": false
+			"SemVersion": "^3.8.0",
+			"Enabled": false
 		},
 		{
 			"Name": "KPrivateCodeLib",
-			"SemVersion": "^2.2.0",
+			"SemVersion": "^3.0.0",
 			"bIsOptional": false,
 			"bIsBasePlugin": false,
-			"Enabled": true,
-			"BasePlugin": false
+			"Enabled": true
 		}
 	],
-	"RemoteVersionRange": "",
 	"AcceptsAnyRemoteVersion": false,
 	"GameVersion": ">=365306"
 }
